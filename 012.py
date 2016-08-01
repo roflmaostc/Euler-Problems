@@ -25,7 +25,8 @@ def triangleNumberRecursive(order):
         return 1
     return order+triangleNumber(order-1)
 
-def triangleNumber(order):
+
+    def triangleNumber(order):
     """Create triangle numbers linearly"""
     return order*(order+1)//2
 
@@ -53,6 +54,7 @@ def numberOfDivider2(number):
         i+=1
     return amount,number
 
+
 def solveProblem():
     for i in range(1,100000):
         amount, number=numberOfDivider2(triangleNumber(i))
@@ -61,6 +63,5 @@ def solveProblem():
             return number
     
     return 0
-
 
 print(solveProblem())
