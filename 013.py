@@ -113,6 +113,9 @@ def solveProblem(numbers, length=50):
     return str(sum(numbersList))[0:10]
 
 
+def solveProblemEasy(numbers, length=50):
+    return str(sum([int(numbers[i*length:(i+1)*length-1]) for i in range(0, len(numbers)//50)]))[:10]
+
 
 numbers="37107287533902102798797998220837590246510135740250\
 46376937677490009712648124896970078050417018260538\
@@ -217,3 +220,4 @@ numbers="37107287533902102798797998220837590246510135740250\
 
 
 print(solveProblem(numbers))
+print(solveProblemEasy(numbers))

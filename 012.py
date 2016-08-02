@@ -26,8 +26,7 @@ def triangleNumberRecursive(order):
     return order+triangleNumber(order-1)
 
 
-    def triangleNumber(order):
-    """Create triangle numbers linearly"""
+def triangleNumber(order):
     return order*(order+1)//2
 
 
