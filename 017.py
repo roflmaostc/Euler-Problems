@@ -37,7 +37,7 @@ def digitToWord(number, power):
 
         #single number inside [20,99
     elif power==1:
-        digitsWordsConnection={0:"", 1:"ten" ,2:"twenty", 3:"thirty", 4:"fourty", 5:"fifty", 6:"sixty", 7:"seventy", 8:"eighty", 9:"ninety"}
+        digitsWordsConnection={0:"", 1:"ten" ,2:"twenty", 3:"thirty", 4:"forty", 5:"fifty", 6:"sixty", 7:"seventy", 8:"eighty", 9:"ninety"}
         return digitsWordsConnection[digit], 0
         
     elif power==2:
@@ -53,7 +53,7 @@ def solveProblem(border=1000):
     allNumbers=""
     for i in range(1, border+1):
         allNumbers+=numberToWords(i)
-        # print(numberToWords(i))
+        print(numberToWords(i))
     return len(allNumbers)
 
 print(solveProblem())
