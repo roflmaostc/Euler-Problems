@@ -33,7 +33,7 @@ def loadTriangleToList(filename):
 
 def bottomToTop(triangle):
     nodeSum=triangle
-    i=98
+    i=len(triangle)-2
     while i>=0:
         for j in range(i+1):
             nodeSum[i][j]+=maxValueOfKids(nodeSum,i,j)
@@ -80,4 +80,4 @@ def dumbMethod(triangle):
     return sum(way)
 #OLD PART END
 
-print(bottomToTop(loadTriangleToList("triangle.txt")))
+print(bottomToTop(loadTriangleToList("files/triangle.txt")))
