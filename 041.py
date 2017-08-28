@@ -26,8 +26,7 @@ def createNumbersRecursive(base, numbers, generatedNumbers):
         
         base=removeDigit(base, digit)
         numbers.append(digit)
-
-    return 
+    return  
 
 def createNumbers(numbers):
     allNumbers=[]
