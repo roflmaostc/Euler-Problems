@@ -45,14 +45,11 @@ def removeDigit(number, digitToRemove):
 
 def solveProblem():
     max = 0
-    
     for j in range(1,10):
         numbers=createNumbers([i for i in range(1,j+1)])
-        
         for n in numbers:
             if isPrime(n) and n>max:
                 max = n
-
     return max 
 
 print(solveProblem())
