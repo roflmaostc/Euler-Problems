@@ -20,6 +20,7 @@ def isPrime(number):
 
 
 def isPandigital(number,n):
+    #slower than is_pandigital
     s = str(number)
     for i in range(1,n+1):
         if str(i) not in s:
@@ -51,8 +52,8 @@ def is_pandigital(num, digits):
     return True
 
 
-
 def is_pandigital2(num, digitsA):
+    #slower than is_pandigital
     #digitsA is e.g. 54321
     res = 0
     while num>=1:
@@ -61,6 +62,7 @@ def is_pandigital2(num, digitsA):
         res += 10**(digit-1)*digit 
 
     return res == digitsA
+
 
 
 def rec_pandigital(base, numbers, generatedNumbers):
