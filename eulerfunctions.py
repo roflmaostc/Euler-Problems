@@ -92,8 +92,7 @@ def is_pandigital2(num, digitsA):
 
 
 def rec_pandigital(base, numbers, generatedNumbers):
-    """This function creates all permutations of a number of concatenated elements of parameter numbers
-    """
+    """This function is internally called by create_pandigitals"""
     numbersForLoop=numbers.copy()
     for digit in numbersForLoop: 
         numbers.remove(digit)
@@ -109,6 +108,8 @@ def rec_pandigital(base, numbers, generatedNumbers):
     return  
 
 def create_pandigitals(numbers):
+    """This function creates all permutations of a number of concatenated elements of parameter numbers
+    """
     allNumbers=[]
     rec_pandigital(0, numbers,allNumbers) 
     return allNumbers
