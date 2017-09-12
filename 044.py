@@ -29,8 +29,8 @@ def solveProblem():
             diff = p1-p2
             if is_pentagonal(diff) and is_pentagonal(p1+p2) and diff<min:
                 min = diff
-                print(p1)
-    return min
+                return int(min)
+    return int(min)
 
 
 
