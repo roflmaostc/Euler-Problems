@@ -3,6 +3,9 @@
 Commonly and often used Euler functions
 """
 
+
+from math import sqrt
+
 def isPrime(number):
     import numpy as np
     if number==1:
@@ -96,4 +99,15 @@ def removeDigit(number, digitToRemove):
 
 
 
+def is_pentagonal(p):
+   return (1+sqrt(1+24*p))/6%1==0
 
+
+def is_triangle_number(num):
+    #you can rearrange the triangle equation and you will see this is enough
+    #use of p-q equation
+    return is_square(1+8*num) 
+
+
+def is_hexagonal(h):
+    return (1+sqrt(1+8*h)) % 4 == 0
