@@ -15,57 +15,39 @@ import numpy as np
 def solveProblem():
     ps = generate_primes(int(1e6))
     primes = create_prime_array(int(1e6), ps)
-       
+    famValue = 8
+
     for number in ps:
-        if number < 100000:
-            continue
-        
         for pos in reversed(range(1,len(str(number))+1)):
-            counter = 0
-            for d in range(0,10):
-                if d==0 and pos == len(str(number)):
-                    continue
-                if primes[replace_digit(number, d, [pos])]:
-                    counter +=1
-                    # print(replace_digit(number,d,[pos]))
-            if counter == 8:
-                return number
+            tmp = check_if_fulfilled(number, [pos], famValue, primes) 
+            if tmp != -1:
+                return tmp
             
             for pos2 in reversed(range(1,pos+1)):
-                counter = 0
-                for d in range(0,10): 
-                    if d==0 and pos == len(str(number)):
-                        continue
-                    if primes[replace_digit(number, d, [pos,pos2])]:
-                        counter +=1
-                if counter == 8:
-                    return number if pos!=len(str(number)) else replace_digit(number,1,[pos,pos2]) 
-                
+                tmp = check_if_fulfilled(number, [pos,pos2], famValue, primes) 
+                if  tmp != -1:
+                    return tmp
+    
                 for pos3 in reversed(range(1,pos2+1)):
-                    counter = 0
-                    for d in range(0,10): 
-                        if d==0 and pos == len(str(number)):
-                            continue
-                        if primes[replace_digit(number, d, [pos,pos2,pos3])]:
-                            counter +=1
-                            print(replace_digit(number,d,[pos,pos2,pos3]))
-                    if counter == 8:
-                        return number if pos!=len(str(number)) else replace_digit(number,1,[pos,pos2,pos3]) 
-                        # return number
+                    tmp = check_if_fulfilled(number, [pos,pos2,pos3], famValue, primes) 
+                    if  tmp != -1:
+                        return tmp
+    return "Nothing found fullfilling criteria"
 
-    return 0
-
-def check_if_fulfilled(number,list, limit):
+def check_if_fulfilled(number,l, famValue, primes):
+    """Checks if criteria of exercise is fullfilled"""
+    counter = 0
     for d in range(0,10): 
-        if d==0 and pos == len(str(number)):
+        if d==0 and l[0] == len(str(number)):
             continue
-        if primes[replace_digit(number, d, [pos,pos2,pos3])]:
+        if primes[replace_digit(number, d, l)]:
             counter +=1
-            print(replace_digit(number,d,[pos,pos2,pos3]))
-    if counter == limit:
-        return number if pos!=len(str(number)) else replace_digit(number,1,[pos,pos2,pos3]) 
+    if counter == famValue:
+        return number if l[0]!=len(str(number)) else replace_digit(number,1,l) 
 
+    return -1
 
+    
 def replace_digit(n, d, pos):
     """Replaces digit in number n at all position (stored in pos-list) with digit d"""
     n = str(n)
@@ -82,7 +64,7 @@ def replace_digit2(n, d, pos):
     """Replaces digit in number n at all position (stored in pos-list) with digit d. Approximately 30% faster than replace_digit. 1023. Digit is 3 is at pos=1 and digit 1 is at pos=4"""
     s = str(n) 
     for p in pos:
-        tmp = int(s[p])
+        tmp = int(s[len(s)-p])
         n += 10**(p-1)*(d-tmp)
             
     return n
