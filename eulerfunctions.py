@@ -44,6 +44,11 @@ def prime_factors(n, primes=[], duplicate=True):
     return factors
 
 
+def is_palindrome(x):
+    return str(x) == str(x)[::-1]
+
+def reverse(x):
+    return int(str(x)[::-1])
 
 def isPandigital(number,n):
     #slower than is_pandigital
