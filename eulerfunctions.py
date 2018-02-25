@@ -155,7 +155,7 @@ def gcd(a,b):
 
 
 def generate_primes(limit):
-    """This functions creates primes up to a limit using sieve of Erastostehens"""
+    """This functions creates primes up to a limit using sieve of Eratosthenes"""
 
     limit += 1
     from bitarray import bitarray
@@ -175,6 +175,15 @@ def generate_primes(limit):
     
     return [i for i in range(0,limit) if primes[i]]
 
+def generate_primes2(limit):
+    """This functions creates primes up to a limit using sieve of Eratosthenes"""
+    numbers = [i for i in range(2,limit)]
+    i = 0
+    while i+1 < len(numbers):
+        p = numbers[i]
+        numbers = numbers[0:i+1]+list(filter(lambda x: x % p!=0, numbers[i+1:]))
+        i += 1
+    return numbers
 
 
 def factor_number(n):
