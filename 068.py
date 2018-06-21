@@ -47,7 +47,6 @@ def valid(field, S, cnt):
 #solve for restricted sum
 def solve(S, nums, field, cnt, solved):
     for n in nums:
-        # print(field)
         field[cnt] = n
         if valid(field, S, cnt):
             if cnt == 9: 
@@ -97,7 +96,6 @@ def main():
         solve(k, ns, field, 0, sols) 
     
     sols.sort()
-    print(sols)
     n = int(''.join(str(e) for e in sols[-1]))
     return n
 
