@@ -21,6 +21,14 @@ def isPrime(number):
             return False
     return True
 
+#eulers totient function    
+def phi(n, primes):
+    ps = prime_factors(n, primes, duplicate=False)
+    res = n
+    for p in ps:
+        res *= (1-1/p)
+    return round(res)
+
 
 
 def prime_factors(n, primes=[], duplicate=True):
