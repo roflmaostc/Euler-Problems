@@ -183,6 +183,7 @@ def generate_primes(limit):
     
     return [i for i in range(0,limit) if primes[i]]
 
+#SLOWER THAN generate_primes
 def generate_primes2(limit):
     """This functions creates primes up to a limit using sieve of Eratosthenes"""
     numbers = [i for i in range(2,limit)]
