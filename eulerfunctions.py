@@ -163,43 +163,33 @@ def gcd(a,b):
 
 
 def generate_primes(limit):
-    """This functions creates primes up to a limit using sieve of Eratosthenes"""
-
-    limit += 1
-    from bitarray import bitarray
-    primes = bitarray(limit)
-    primes.setall(True)
-
+    """This functions creates primes up to a limit using sieve of Eratosthenes.
+        limit exclusive"""
+   
+    primes = [True for i in range(limit)]
     #0 and 1 are not primes
     primes[0] = False
     primes[1] = False
-    
+      
     #now sieving
-    for i in range(2, len(primes)):
+    i = 2
+    while i<len(primes):
         counter = 2*i
         while counter < limit:
             primes[counter] = False 
             counter += i
-    
+        i += 1
+        while i<len(primes) and primes[i] == False:
+            i += 1
+
     return [i for i in range(0,limit) if primes[i]]
 
-#SLOWER THAN generate_primes
-def generate_primes2(limit):
-    """This functions creates primes up to a limit using sieve of Eratosthenes"""
-    numbers = [i for i in range(2,limit)]
-    i = 0
-    while i+1 < len(numbers):
-        p = numbers[i]
-        numbers = numbers[0:i+1]+list(filter(lambda x: x % p!=0, numbers[i+1:]))
-        i += 1
-    return numbers
 
 
 def factor_number(n):
     """ This algorithm splits a number n into two integers a and b satisfying n = a*b. a and b must not be primes. 
         The used algorithm is Pollard's rho algorithm.
         Doesn't guarantee a solution!"""
-   
 
     if n % 2 == 0 and n != 2:
         return (2, n//2)
@@ -228,3 +218,27 @@ def crossfoot(x):
         s += x%10
         x //= 10
     return s
+
+
+
+def generate_primes_old(limit):
+    """This functions creates primes up to a limit using sieve of Eratosthenes"""
+
+    limit += 1
+    # from bitarray import bitarray
+    # primes = bitarray(limit)
+    # primes.setall(True)
+   
+    primes = [True for i in range(limit)]
+    #0 and 1 are not primes
+    primes[0] = False
+    primes[1] = False
+    
+    #now sieving
+    for i in range(2, len(primes)):
+        counter = 2*i
+        while counter < limit:
+            primes[counter] = False 
+            counter += i
+    
+    return [i for i in range(0,limit) if primes[i]]
